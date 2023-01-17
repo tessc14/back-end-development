@@ -92,3 +92,9 @@ Generalised:
 
     response.json(goat);
 })
+
+
+## terminology
+    - app.get("/goats" this is a root or endpoint it means localhost:3000/goats
+        - it is a location a user can go to interact
+    

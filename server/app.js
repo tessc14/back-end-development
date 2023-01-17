@@ -1,9 +1,17 @@
 //describes the server/API
 
 const express = require("express"); //access to express library
+const cors = require("cors")
 const {goats, nextId} = require("./goats"); // access goats data
 const app = express(); //make very basic server using express
 
+//middleware
+// req -> [cors (add header to response)] -> [API] -> response
+app.use(cors())
+
+
+
+//endpoints
 //tell the app what kinds of request to listen  for and how to handle them
 
 app.get("/", (request, response) => {
@@ -39,5 +47,7 @@ app.get("/goats/:id", (request, response) => {
 
     response.json(goat);
 })
+
+
 
 module.exports = app; // makes the server available to other files
