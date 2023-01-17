@@ -43,4 +43,35 @@ express lets us build servers easily:
 
     6. check at http://localhost:3000/ (or whatever number) and running node index.js in terminal
 
-Split into two sections, one to run the server one 
+## organising
+        Split into two sections, one to describe the server (app.js) one to run the server (index.js)
+
+        add scripts to package.json
+            "scripts": {
+                "start": "node index.js",
+                "dev": "node index.js"
+            }
+        - to run scripts: npm run start or npm run dev
+
+        npm install -D nodemon
+            - change "dev" script to "nodemon -L index.js"
+        
+        If creating database kind of thing do in separate file e.g. goats.js
+
+
+## kinds of requests and how to handle them
+Choose error message:
+    app.get("/goats", (request, response) => {
+        response.status(503).json({
+            "message": "Eventually, this will provide a list of goats"
+        })
+    })
+    - a link to the different error codes:
+        https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#server_error_responses 
+
+Show .json:
+    app.get("/", (request, response) => {
+        response.json({
+            "message": "Hello, world!"
+        });
+    })
