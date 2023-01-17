@@ -17,9 +17,8 @@ app.get("/goats", (request, response) => {
 })
 
 app.get("./goats/1", (request, response) => {
-    console.log(goats);
-    const goat = goats.filter(g => g["id"] == 1);
-    console.log(goat);
+
+    const goat = goats.filter(g => g["id"] == 1)[0];
 
     response.json(goat);
 })
