@@ -22,6 +22,14 @@ app.get("/goats/:id", (request, response) => {
 
     const goat = goats.filter(g => g["id"] == id)[0];
 
+    if (goat) {
+        response.json(goat);
+    } else {
+        response.status(404).json({
+            error: "No such goat!"
+        });
+    }
+
     response.json(goat);
 })
 
