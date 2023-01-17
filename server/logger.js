@@ -10,7 +10,7 @@ function logger(request, response, next) {
     
     //log key details
     console.log(request.method, request.originalUrl);
-    
+
 
     //pass down to the next layer
     next();
