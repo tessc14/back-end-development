@@ -21,11 +21,26 @@ function createGoatCard(goat) {
     colourBox.appendChild(colourName);
     card.appendChild(colourBox);
 
+    //add more content??
+    const button = document.createElement("button");
+    button.setAttribute("id", "button");
+    button.innerText = "Delete";
+    card.appendChild(button);
+
+    card.querySelector('button').addEventListener("click", (e) => { 
+
+        e.preventDefault();
+        card.remove();
+    
+    })
+    
+
     //customise classes
     card.classList.add(goat["age"] < 5 ? "young" : "old");
 
     //attach it to the container
     herd.appendChild(card);
+
 }
 
 async function callTheHerd () {
@@ -35,10 +50,11 @@ async function callTheHerd () {
 
     //extract json data from the response
     const data = await response.json();
-
+    // for each goat create a card
     data.forEach(g => createGoatCard(g));
 
 };
+
 
 document.querySelector("form").addEventListener("submit", (e) => {
     

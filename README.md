@@ -2,6 +2,7 @@
 
 
 ## Client
+Everything is built on top of 'index.html': open this file in a browser to interact with the site
 
 ## Server
 
@@ -97,4 +98,13 @@ Generalised:
 ## terminology
     - app.get("/goats" this is a root or endpoint it means localhost:3000/goats
         - it is a location a user can go to interact
+
+
+
+
+## challenges
+    x add button to each goat card that allows you to delete the goat, on deletion the card should disappear from the list and be forgotten by the API, page should not refresh
+    - handle creation requests that don't have all required data (name, age, sex, favourite colour)
+    - add an update route that allows users to change the age or favourite colour of a goat based on its id
+    - allow goat updates from the front-end interface
     

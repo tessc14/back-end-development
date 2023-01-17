@@ -1,10 +1,10 @@
 //describes the server/API
 
 const express = require("express"); //access to express library
-const cors = require("cors")
+const cors = require("cors"); // access to cors library
 
-let {goats, nextId} = require("./goats"); // access goats data
-const logger = require("./logger")
+let {goats, nextId} = require("./goats"); // access goats data in ./goats.js file
+const logger = require("./logger"); // access logger file
 
 const app = express(); //make very basic server using express
 
@@ -16,7 +16,7 @@ app.use(cors()); //layer to add cors headers
 app.use(logger); // layer to log access
 
 //endpoints
-//tell the app what kinds of request to listen  for and how to handle them
+//tell the app what kinds of request to listen for and how to handle them
 
 app.get("/", (request, response) => {
     response.json({
