@@ -16,4 +16,12 @@ app.get("/goats", (request, response) => {
     response.json(goats);
 })
 
+app.get("./goats/1", (request, response) => {
+    console.log(goats);
+    const goat = goats.filter(g => g["id"] == 1);
+    console.log(goat);
+
+    response.json(goat);
+})
+
 module.exports = app; // makes the server available to other files
