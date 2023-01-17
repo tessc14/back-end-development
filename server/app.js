@@ -8,12 +8,19 @@ const app = express(); //make very basic server using express
 
 app.get("/", (request, response) => {
     response.json({
-        "message": "Hello, world!"
+        "message": "Welcome to the GOAT API"
     });
 })
 
 app.get("/goats", (request, response) => {
-    response.json(goats);
+    
+    const  { maxAge } = request.query;
+    if (maxAge) {
+        response.json(goats.filter(g => g["age"] <= maxAge));
+    } else {
+        response.json(goats);
+    }
+
 })
 
 app.get("/goats/:id", (request, response) => {
