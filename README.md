@@ -75,3 +75,26 @@ Show .json:
             "message": "Hello, world!"
         });
     })
+
+Get some of the data from data store
+    app.get("/goats/1", (request, response) => {
+
+        const goat = goats.filter(g => g["id"] == 1)[0];
+
+        response.json(goat);
+    })
+Generalised:
+    app.get("/goats/:id", (request, response) => {
+    
+    const id = request.params["id"];
+
+    const goat = goats.filter(g => g["id"] == id)[0];
+
+    response.json(goat);
+})
+
+
+## terminology
+    - app.get("/goats" this is a root or endpoint it means localhost:3000/goats
+        - it is a location a user can go to interact
+    
