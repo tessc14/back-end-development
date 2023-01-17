@@ -40,4 +40,33 @@ async function callTheHerd () {
 
 };
 
+document.querySelector("form").addEventListener("submit", (e) => {
+    
+    e.preventDefault();
+
+    const goat = {
+        name: e.target.name.value,
+        age: e.target.age.value,
+        sex: e.target.age.value,
+        favouriteColour: e.target.colour.value
+    }
+
+    const options = {
+        method: "POST",
+        body: JSON.stringify(goat),
+        headers: {
+            'Accept': 'application/json',   //want json back
+            'Content-Type': 'application/json' //sending json
+          },
+    }
+
+    fetch("http://localhost:3000/goats", options) //fetch with options
+        .then(res => res.json())    //extract the data
+        .then(data => createGoatCard(data)) //make a goat card with the data
+        .catch(err => {
+            console.log(err);
+            alert("One of our goats is missing!");
+        })  //if anything goes wrong
+})
+
 callTheHerd()
