@@ -2,14 +2,17 @@
 
 const express = require("express"); //access to express library
 const cors = require("cors")
+
 const {goats, nextId} = require("./goats"); // access goats data
+const logger = require("./logger")
+
 const app = express(); //make very basic server using express
+
 
 //middleware
 // req -> [cors (add header to response)] -> [API] -> response
-app.use(cors())
-
-
+app.use(cors());
+app.use(logger);
 
 //endpoints
 //tell the app what kinds of request to listen  for and how to handle them
@@ -40,6 +43,7 @@ app.get("/goats/:id", (request, response) => {
     if (goat) {
         response.json(goat);
     } else {
+        // send a status of 404 with a message
         response.status(404).json({
             error: "No such goat!"
         });
